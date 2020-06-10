@@ -1,0 +1,258 @@
+﻿
+@{
+    ViewBag.Title = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header id="masthead" class="header ttm-header-style-01">
+    <!-- ttm-header-wrap -->
+    <div class="ttm-header-wrap">
+        <!-- ttm-stickable-header-w -->
+        <div id="ttm-stickable-header-w" class="ttm-stickable-header-w ttm-bgcolor-darkgrey clearfix">
+            <div id="site-header-menu" class="site-header-menu">
+                <div class="site-header-menu-inner ttm-stickable-header">
+                    <div class="container-fluid">
+                        <!-- site-branding -->
+                        <div class="site-branding">
+                            <a class="home-link" href="@Url.Action("Index","Home")" title="Zester" rel="home">
+                                <img id="logo-img" class="img-center" src="~/Design/sunshinelogo.png" alt="logo-img" style="margin-top:-7px;">
+                                <b style="color: white; font-size: xx-large; font-family: 'Century Schoolbook'">Sunshine Catering</b>
+                            </a>
+                        </div><!-- site-branding end -->
+                        <!--site-navigation -->
+                        <div id="site-navigation" class="site-navigation">
+                            <!-- header-icons -->
+                            <!-- header-icons end -->
+                            @*<div class="header-btn">
+                                    <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-border ttm-btn-color-skincolor" href="#">ORDER ONLINE</a>
+                                </div>*@
+
+                            <div class="ttm-menu-toggle">
+                                <input type="checkbox" id="menu-toggle-form" />
+                                <label for="menu-toggle-form" class="ttm-menu-toggle-block">
+                                    <span class="toggle-block toggle-blocks-1"></span>
+                                    <span class="toggle-block toggle-blocks-2"></span>
+                                    <span class="toggle-block toggle-blocks-3"></span>
+                                </label>
+                            </div>
+                            <nav id="menu" class="menu">
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="@Url.Action("Index","Home")">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("About","Home")">About Us</a>
+                                    </li>
+
+                                    <li class="active">
+                                        <a href="@Url.Action("Services", "Home")">Services</a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Menu","Home")">Menu</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Gallery","Home")">Gallery</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Contact","Home")">Contact</a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div><!-- site-navigation end-->
+                    </div>
+                </div>
+            </div>
+        </div><!-- ttm-stickable-header-w end-->
+    </div><!--ttm-header-wrap end -->
+</header>
+
+<div class="ttm-page-title-row">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-box">
+                    <div class="page-title-heading">
+                        <h1 class="title">Our Services</h1>
+                    </div><!-- /.page-title-captions -->
+
+                </div>
+            </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</div>
+
+
+
+
+<div class="site-main">
+    <!-- blog-section -->
+    <section class="ttm-row blog-last-section clearfix">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-6 col-lg-4 col-sm-6">
+                    <!-- featured-imagebox-blog -->
+                    <div class="featured-imagebox featured-imagebox-blog mb-30">
+                        <div class="featured-thumbnail">
+                            <!-- featured-thumbnail -->
+                            <img class="img-fluid" src="~/Design/images/blog/01.jpg" alt="">
+                            <div class="ttm-blog-text"><span>Events</span></div>
+                        </div>
+                        <div class="featured-content ttm-bgcolor-white box-shadow">
+                            <!-- featured-content -->
+                            <div class="post-meta">
+                                <!-- post-date -->
+                                <span class="ttm-meta-line">June 16, 2019</span>
+                            </div>
+                            <div class="featured-title">
+                                <!-- featured-title -->
+                                <h5><a href="#">30 Truly Amazing Vanilla Cake Recipes</a></h5>
+                            </div>
+                            <div class="featured-desc">
+                                <!-- featured-desc -->
+                                <p>An excessive amount of soy sauce can overpower the taste of Japanese cuisine. It can be co...</p>
+                            </div>
+                            <a class="ttm-btn btn-inline ttm-btn-color-skincolor" href="#">Read More</a>
+                        </div>
+                    </div><!-- featured-imagebox-dishes end -->
+                </div>
+                <div class="col-md-6 col-lg-4 col-sm-6">
+                    <!-- featured-imagebox-blog -->
+                    <div class="featured-imagebox featured-imagebox-blog mb-30">
+                        <div class="featured-thumbnail">
+                            <!-- featured-thumbnail -->
+                            <img class="img-fluid" src="~/Design/images/blog/02.jpg" alt="">
+                            <div class="ttm-blog-text"><span>Food Lover</span></div>
+                        </div>
+                        <div class="featured-content ttm-bgcolor-white box-shadow">
+                            <!-- featured-content -->
+                            <div class="post-meta">
+                                <!-- post-date -->
+                                <span class="ttm-meta-line">dec 15, 2019</span>
+                            </div>
+                            <div class="featured-title">
+                                <!-- featured-title -->
+                                <h5><a href="#">3Why Include Fresh Ingredients in Diet</a></h5>
+                            </div>
+                            <div class="featured-desc">
+                                <!-- featured-desc -->
+                                <p>An excessive amount of soy sauce can overpower the taste of Japanese cuisine. It can be co...</p>
+                            </div>
+                            <a class="ttm-btn btn-inline ttm-btn-color-skincolor" href="#">Read More</a>
+                        </div>
+                    </div><!-- featured-imagebox-dishes end -->
+                </div>
+                <div class="col-md-6 col-lg-4 col-sm-6">
+                    <!-- featured-imagebox-blog -->
+                    <div class="featured-imagebox featured-imagebox-blog mb-30">
+                        <div class="featured-thumbnail">
+                            <!-- featured-thumbnail -->
+                            <img class="img-fluid" src="~/Design/images/blog/03.jpg" alt="">
+                            <div class="ttm-blog-text"><span>Food lover</span></div>
+                        </div>
+                        <div class="featured-content ttm-bgcolor-white box-shadow">
+                            <!-- featured-content -->
+                            <div class="post-meta">
+                                <!-- post-date -->
+                                <span class="ttm-meta-line">dec 10, 2019</span>
+                            </div>
+                            <div class="featured-title">
+                                <!-- featured-title -->
+                                <h5><a href="#">3Use Minimal Amount On All Foods</a></h5>
+                            </div>
+                            <div class="featured-desc">
+                                <!-- featured-desc -->
+                                <p>An excessive amount of soy sauce can overpower the taste of Japanese cuisine. It can be co...</p>
+                            </div>
+                            <a class="ttm-btn btn-inline ttm-btn-color-skincolor" href="#">Read More</a>
+                        </div>
+                    </div><!-- featured-imagebox-dishes end -->
+                </div>
+                <div class="col-md-6 col-lg-4 col-sm-6">
+                    <!-- featured-imagebox-blog -->
+                    <div class="featured-imagebox featured-imagebox-blog mb-30">
+                        <div class="featured-thumbnail">
+                            <!-- featured-thumbnail -->
+                            <img class="img-fluid" src="~/Design/images/blog/04.jpg" alt="">
+                            <div class="ttm-blog-text"><span>Culinary Traveller</span></div>
+                        </div>
+                        <div class="featured-content ttm-bgcolor-white box-shadow">
+                            <!-- featured-content -->
+                            <div class="post-meta">
+                                <!-- post-date -->
+                                <span class="ttm-meta-line">may 30, 2019</span>
+                            </div>
+                            <div class="featured-title">
+                                <!-- featured-title -->
+                                <h5><a href="#">Make Fresh Juice For Your Health and diet</a></h5>
+                            </div>
+                            <div class="featured-desc">
+                                <!-- featured-desc -->
+                                <p>An excessive amount of soy sauce can overpower the taste of Japanese cuisine. It can be co...</p>
+                            </div>
+                            <a class="ttm-btn btn-inline ttm-btn-color-skincolor" href="#">Read More</a>
+                        </div>
+                    </div><!-- featured-imagebox-dishes end -->
+                </div>
+                <div class="col-md-6 col-lg-4 col-sm-6">
+                    <!-- featured-imagebox-blog -->
+                    <div class="featured-imagebox featured-imagebox-blog mb-30">
+                        <div class="featured-thumbnail">
+                            <!-- featured-thumbnail -->
+                            <img class="img-fluid" src="~/Design/images/blog/01.jpg" alt="">
+                            <div class="ttm-blog-text"><span>Miscellaneous</span></div>
+                        </div>
+                        <div class="featured-content ttm-bgcolor-white box-shadow">
+                            <!-- featured-content -->
+                            <div class="post-meta">
+                                <!-- post-date -->
+                                <span class="ttm-meta-line">June 12, 2019</span>
+                            </div>
+                            <div class="featured-title">
+                                <!-- featured-title -->
+                                <h5><a href="#">Delicious Hot Grilled Chicken Recipes</a></h5>
+                            </div>
+                            <div class="featured-desc">
+                                <!-- featured-desc -->
+                                <p>An excessive amount of soy sauce can overpower the taste of Japanese cuisine. It can be co...</p>
+                            </div>
+                            <a class="ttm-btn btn-inline ttm-btn-color-skincolor" href="#">Read More</a>
+                        </div>
+                    </div><!-- featured-imagebox-dishes end -->
+                </div>
+                <div class="col-md-6 col-lg-4 col-sm-6">
+                    <!-- featured-imagebox-blog -->
+                    <div class="featured-imagebox featured-imagebox-blog mb-30">
+                        <div class="featured-thumbnail">
+                            <!-- featured-thumbnail -->
+                            <img class="img-fluid" src="~/Design/images/blog/01.jpg" alt="">
+                            <div class="ttm-blog-text"><span>Events</span></div>
+                        </div>
+                        <div class="featured-content ttm-bgcolor-white box-shadow">
+                            <!-- featured-content -->
+                            <div class="post-meta">
+                                <!-- post-date -->
+                                <span class="ttm-meta-line">June 16, 2019</span>
+                            </div>
+                            <div class="featured-title">
+                                <!-- featured-title -->
+                                <h5><a href="#">30 Truly Amazing Vanilla Cake Recipes</a></h5>
+                            </div>
+                            <div class="featured-desc">
+                                <!-- featured-desc -->
+                                <p>An excessive amount of soy sauce can overpower the taste of Japanese cuisine. It can be co...</p>
+                            </div>
+                            <a class="ttm-btn btn-inline ttm-btn-color-skincolor" href="#">Read More</a>
+                        </div>
+                    </div><!-- featured-imagebox-dishes end -->
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <!-- blog-section end -->
+</div><!--site-main end-->

@@ -1,0 +1,168 @@
+﻿@using CateringSite.DAL;
+@using CateringSite.Models;
+@{
+    ViewBag.Title = "AllContactForm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<UserContact> contact = ViewData["AllContacts"] as List<UserContact>;
+}
+<link href="~/Design/css/font-awesome.css" rel="stylesheet" />
+<div class="page-wrapper">
+    <div class="content">
+
+        <div class="row" style="margin-top:10px;">
+
+            <div class="col-sm-12 col-md-12 text-right m-b-20">
+                <a href="@Url.Action("Index", "Admin", new { area="Admin"})" class="btn btn-primary float-right btn-rounded"> Home</a>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:-10px;">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="" style="color:#481717;text-decoration:underline">All Website Contacts</h4>
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered" id="allstaff">
+                                <thead>
+                                    <tr style="background-color: #2ba5f6; color: white;">
+                                        <th style=" padding: 5px;">Name</th>
+                                        <th style="padding: 5px;">Mobile No</th>
+                                        <th style="padding: 5px;">Email</th>
+                                        <th style="padding: 5px;">Company Name</th>
+                                        <th style="padding: 5px;">Product Name</th>
+                                        <th style="padding: 5px;">Message</th>
+                                        <th style="padding: 5px;">Contact Date</th>
+                                        <th style="padding: 5px;">Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (contact != null)
+                                    {
+
+                                        foreach (var i in contact)
+                                        {
+                                            <tr>
+                                                <td style="font-weight:bold">@i.Name</td>
+                                                <td style="font-weight: bold;">
+                                                    @i.MobileNo
+                                                </td>
+                                                <td style="font-weight: bold;">
+                                                    @i.EmailID
+                                                </td>
+                                                <td style="font-weight: bold;">
+                                                    @i.MobileNo
+                                                </td>
+                                                <td style="font-weight: bold;">
+                                                    @i.Subject
+                                                <td style="font-weight: bold;">
+                                                    @i.Message
+                                                </td>
+                                                <td style="font-weight: bold;">
+                                                    @i.CreatedDate.ToShortDateString()
+                                                </td>
+
+
+                                                <td>
+                                                    <a href="@Url.Action("DeleteContact", "Admin", new { ContactID = i.ContactID, area = "Admin" })" data-togg data-toggle="modal" data-target="#delete_patient" data-myvalue="@i.ContactID" onclick="Setval('@i.ContactID')"><i class="fa fa-trash-o m-r-5" title="Delete"></i></a>
+
+
+
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+   
+
+    <div id="delete_patient" class="modal fade delete-modal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <input type="text" id="PatientDid" style="display:none" />
+                    <img src="~/Design/siteimg.png" alt="" width="100" height="100">
+                    <h3>Are you sure want to delete this Contact?</h3>
+                    <div class="m-t-20">
+                        <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                        <button type="submit" class="btn btn-danger" onclick="DeleteContact('')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Scripts/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/sweetalert.js"></script>
+
+
+
+@Html.Hidden("RedirectToDelete", Url.Action("DeleteWebsiteContacts", "Admin", new { area = "Admin" }))
+@Html.Hidden("RedirectToHome", Url.Action("AllContactForm", "Admin", new { area = "Admin" }))
+
+
+<script type="text/javascript">
+    $(function() {
+        var msg='@TempData["Example"]';
+        if(msg=='Deleted') {
+            sweetAlert({
+                title: "Deleted!",
+                text: "Contact Deleted SUCCESSFULLY.",
+                type: "success"
+            },
+                                  function() {
+                                      var url=$("#RedirectToHome").val();
+                                      location.href=url;
+                                  });
+
+        }
+        else {
+
+
+        }
+    });
+
+</script>
+
+<script>
+    function Setval(id) {
+        document.getElementById('PatientDid').value=id;
+    }
+
+    function DeleteContact() {
+        var ContactID=$('#PatientDid').val();
+        var url=$("#RedirectToDelete").val()+"?ContactID="+ContactID;
+        location.href=url;
+    }
+
+</script>

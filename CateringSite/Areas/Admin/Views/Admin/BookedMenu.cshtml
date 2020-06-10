@@ -1,0 +1,203 @@
+﻿@using CateringSite.DAL;
+@using CateringSite.Models;
+@{
+    ViewBag.Title = "BookedMenu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<MenuBookMain> main = ViewData["AllBookedMenu"] as List<MenuBookMain>;
+}
+
+<link href="~/Design/css/font-awesome.css" rel="stylesheet" />
+<div class="page-wrapper">
+    <div class="content">
+
+        <div class="row" style="margin-top:10px;">
+
+            <div class="col-sm-12 col-md-12 text-right m-b-20">
+                <a href="@Url.Action("Index", "Admin", new { area="Admin"})" class="btn btn-primary float-right btn-rounded"> Home</a>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:-10px;">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="" style="color:#481717;text-decoration:underline">All Booked Detail</h4>
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered" id="allstaff">
+                                <thead>
+                                    <tr style="background-color: #2ba5f6; color: white;">
+                                        <th style=" padding: 5px;">Client Name</th>
+                                        <th style="padding: 5px;">For No of People</th>
+                                        <th style="padding: 5px;">Booking Date</th>
+                                        <th style="padding: 5px;">Booking Time</th>
+                                        <th style="padding: 5px;">Email</th>
+                                        <th style="padding: 5px;">Mobile No.</th>
+                                        <th style="padding: 5px;">Address</th>
+                                        <th style="padding: 5px;">Booked On</th>
+                                        <th style="padding: 5px;">See Menu</th>
+                                        <th style="padding: 5px;">Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (main != null)
+                                    {
+
+                                        foreach (var i in main)
+                                        {
+                                            <tr>
+                                                <td style="font-weight:bold">@i.ClientName</td>
+                                                <td style="font-weight: bold;">
+                                                    @i.NoofPeople
+                                                </td>
+                                                <td style="font-weight: bold;">
+                                                    @i.BookDate.ToShortDateString()
+                                                </td>
+                                                <td style="font-weight: bold;">
+                                                    @i.BookTime
+                                                </td>
+                                                <td style="font-weight: bold;">
+                                                    @i.Email
+                                                <td style="font-weight: bold;">
+                                                    @i.MobileNo
+                                                </td>
+                                                <td style="font-weight: bold;">
+                                                    @i.Address
+                                                </td>
+                                                <td style="font-weight: bold;">
+                                                    @i.BookedOn.ToShortDateString()
+                                                </td>
+
+
+                                                <td>
+                                                    <i class="fa fa-file-pdf-o" style="color:red" onclick="GetBookedMenu('@i.BookingID')"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="@Url.Action("DeleteContact", "Admin", new { BookingID = i.BookingID, area = "Admin" })" data-togg data-toggle="modal" data-target="#delete_patient" data-myvalue="@i.BookingID" onclick="Setval('@i.BookingID')"><i class="fa fa-trash-o m-r-5" title="Delete"></i></a>
+
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="delete_patient" class="modal fade delete-modal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <input type="text" id="PatientDid" style="display:none" />
+                    <img src="~/Design/siteimg.png" alt="" width="100" height="100">
+                    <h3>Are you sure want to delete this Contact?</h3>
+                    <div class="m-t-20">
+                        <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                        <button type="submit" class="btn btn-danger" onclick="DeleteContact('')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+@Html.Hidden("RedirectToPrint", Url.Action("PrintMenuOrder", "Admin", new { area="Admin"}))
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/dataTables.bootstrap4.min.js"></script>
+<link href="~/Scripts/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/sweetalert.js"></script>
+
+<script>
+
+    function GetBookedMenu(menuid) {
+        var url=$("#RedirectToPrint").val()+"?BookingID="+menuid;
+        location.href=url;
+    }
+
+</script>
+
+
+
+<script>
+    $('#allstaff thead tr').clone(true).appendTo('#allstaff thead');
+    var table=$('#allstaff').DataTable({
+        orderCellsTop: true,
+        fixedHeader: true
+    });
+    $('#allstaff thead tr:eq(1) th').each(function(i) {
+        var title=$(this).text().trim();
+        if(title=="Action" ||title=="See Menu") {
+            $(this).html('<div style="width:70px;"></div>');
+        }
+
+        else {
+            if(title=="Client Name") {
+                $(this).html('<input type="text" placeholder="Search '+title+'" style="width:120px;"/>');
+            }
+
+            else if(title=="Sub-Product Name"||title=="Email") {
+                $(this).html('<input type="text" placeholder="Search '+title+'" style="width:150px;"/>');
+            }
+
+
+            else if(title=="Address") {
+                $(this).html('<input type="text" placeholder="Search '+title+'" style="width:380px;"/>');
+
+            }
+
+            else {
+                $(this).html('<input type="text" placeholder="Search '+title+'" style="width:100px;"/>');
+            }
+
+        }
+
+
+        $('input',this).on('keyup change',function() {
+            if(table.column(i).search()!==this.value) {
+                table
+                    .column(i)
+                    .search(this.value)
+                    .draw();
+            }
+        });
+    });
+
+
+    $(document).ready(function() {
+        // Setup - add a text input to each footer cell
+
+    });
+    //$('#stock').dataTable({
+    //    fixedHeader: true
+    //});
+</script>

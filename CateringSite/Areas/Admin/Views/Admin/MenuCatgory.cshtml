@@ -1,0 +1,249 @@
+﻿@using CateringSite.DAL;
+@using CateringSite.Models;
+@model CateringSite.Models.MenuCategoryMaster
+@{
+    ViewBag.Title = "MenuCatgory";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<MenuCategoryMaster> menumaster = ViewData["MenuMaster"] as List<MenuCategoryMaster>;
+}
+<link href="~/Design/css/main.css" rel="stylesheet" />
+<link href="~/Design/css/animate.css" rel="stylesheet" />
+<link href="~/Design/css/animate.min.css" rel="stylesheet" />
+<link href="~/Design/revolution/css/settings.css" rel="stylesheet" />
+<link href="~/Design/css/responsive.css" rel="stylesheet" />
+<link href="~/Design/css/font-awesome.css" rel="stylesheet" />
+
+<section class="contact-section">
+
+    <div class="auto-container">
+        <!--Section Title-->
+        <div class="sec-title-one">
+            <h4 style="font-family:Arial">Add Menu Category Here</h4>
+        </div>
+
+        @if (Model.CategoryID > 0)
+        {
+            <input class="form-control" type="text" id="CategoryID" name="CategoryID" value="@Model.CategoryID" style="display:none">
+        }
+        else
+        {
+            <input class="form-control" type="text" id="CategoryID" name="CategoryID" value="0" style="display:none">
+        }
+
+        <div class="contact-form default-form">
+
+            @using (Html.BeginForm("MenuCatgory", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "MenuCatgory", role = "form", area = "Admin" }))
+            {
+
+                <form method="post" action="#" id="contact-form">
+
+                    <div class="row clearfix">
+
+                        @if (Model.CategoryID > 0)
+                        {
+                            <input class="form-control" type="text" id="CategoryID" name="CategoryID" value="@Model.CategoryID" style="display:none">
+                            <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                <input id="CategoryName" class="form-control with-grey-bg" name="CategoryName" placeholder="Enter Category Name" value="@Model.CategoryName" required type="text">
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                <input id="CategoryImage" class="form-control with-grey-bg" name="CategoryImage" placeholder="Enter Category Image" value="@Model.CategoryImage" required type="file">
+                            </div>
+
+
+                            <center>
+                                <button type="submit" id="submit" class="ttm-btn ttm-btn-size-md ttm-btn-bgcolor-skincolor" value="">
+                                    Update
+                                </button>
+                            </center>
+                        }
+                        else
+                        {
+                            <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                <input id="CategoryName" class="form-control with-grey-bg" name="CategoryName" placeholder="Enter Category Name" required type="text">
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                <input id="CategoryImage" class="form-control with-grey-bg" name="CategoryImage" placeholder="Enter Category Image" required type="file">
+                            </div>
+
+                            <br />
+
+                            <center>
+                                <button type="submit" id="submit" class="ttm-btn ttm-btn-size-md ttm-btn-bgcolor-skincolor" value="">
+                                    Submit
+                                </button>
+                            </center>
+
+                        }
+
+                    </div>
+                </form>
+
+            }
+
+        </div>
+
+        <hr style="border-color:#2ba5f6" />
+
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="" style="color:#481717;text-decoration:underline;text-align:center;font-family:'Arial Rounded MT';font-size:large">All Products</h4>
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered" id="allstaff">
+                                <thead>
+                                    <tr style="background-color: #2ba5f6; color: white;">
+                                        <th style=" padding: 5px;">Category Name</th>
+                                        <th style="padding: 5px;">Image</th>
+                                        <th style="padding: 5px;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (menumaster != null)
+                                    {
+                                        foreach (var i in menumaster)
+                                        {
+                                            <tr>
+                                                <td style="font-weight:bold;color:#481717">@i.CategoryName</td>
+                                                <td>
+                                                    <a href="@Global.WebsiteUrl()@i.CategoryImage" target="_blank">
+                                                        <img src="@Global.WebsiteUrl()@i.CategoryImage" height="50px;" width="56px;" />
+
+                                                    </a>
+
+                                                </td>
+
+
+                                                <td>
+                                                    <a href="@Url.Action("MenuCatgory", "Admin", new { CategoryID = i.CategoryID, area = "Admin" })"><i class="fa fa-pencil"></i></a>
+
+                                                    <a href="@Url.Action("DeleteProduct", "Admin", new { CategoryID = i.CategoryID, area = "Admin" })" data-togg data-toggle="modal" data-target="#delete_patient" data-myvalue="@i.CategoryID" onclick="Setval('@i.CategoryID')"><i class="fa fa-trash-o m-r-5"></i></a>
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+        <div id="delete_patient" class="modal fade delete-modal" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <input type="text" id="JobDid" style="display:none" />
+                        <img src="~/Design/siteimg.png" alt="" width="80" height="80">
+                        <h3>Are you sure want to delete this Menu Category?</h3>
+                        <div class="m-t-20">
+                            <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                            <button type="submit" class="btn btn-danger" onclick="DeleteProduct('')">Delete</button>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</section>
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Scripts/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/sweetalert.js"></script>
+
+
+@Html.Hidden("RedirectToHome", Url.Action("MenuCatgory", "Admin", new { area = "Admin" }))
+@Html.Hidden("RedirectToDelete", Url.Action("DeleteMenuCategory", "Admin", new { area = "Admin" }))
+
+<script type="text/javascript">
+    $(function() {
+        var msg='@TempData["example"]';
+        if(msg=='Succeeded') {
+            sweetAlert({
+                title: "Succeeded!",
+                text: "Menu Category has been Added SUCCESSFULLY.",
+                type: "success"
+            },
+                                  function() {
+                                      var url=$("#RedirectToHome").val();
+                                      location.href=url;
+                                  });
+
+        }
+        else {
+
+
+        }
+    });
+
+</script>
+
+
+<script type="text/javascript">
+    $(function() {
+        var dmsg='@TempData["Deleteexample"]';
+        if(dmsg=='Deleted') {
+            sweetAlert({
+                title: "Succeeded!",
+                text: "Menu Category has been Deleted SUCCESSFULLY.",
+                type: "success"
+            },
+                                  function() {
+                                      var url=$("#RedirectToHome").val();
+                                      location.href=url;
+                                  });
+
+        }
+        else {
+
+
+        }
+    });
+
+</script>
+
+
+
+<script>
+    function Setval(id) {
+        document.getElementById('JobDid').value=id;
+    }
+
+
+    function DeleteProduct() {
+        var CategoryID=$('#JobDid').val();
+        var url=$("#RedirectToDelete").val()+"?CategoryID="+CategoryID;
+        location.href=url;
+    }
+
+
+</script>

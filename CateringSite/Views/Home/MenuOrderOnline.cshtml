@@ -1,0 +1,456 @@
+﻿@using CateringSite.DAL;
+@using CateringSite.Models;
+@{
+    ViewBag.Title = "MenuOrderOnline";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<MenuCategoryMaster> menumaster = ViewData["Menu"] as List<MenuCategoryMaster>;
+    List<AllMenus> menuitems = ViewData["Allmenu"] as List<AllMenus>;
+}
+
+
+<header id="masthead" class="header ttm-header-style-01">
+    <!-- ttm-header-wrap -->
+    <div class="ttm-header-wrap">
+        <!-- ttm-stickable-header-w -->
+        <div id="ttm-stickable-header-w" class="ttm-stickable-header-w ttm-bgcolor-darkgrey clearfix">
+            <div id="site-header-menu" class="site-header-menu">
+                <div class="site-header-menu-inner ttm-stickable-header">
+                    <div class="container-fluid">
+                        <!-- site-branding -->
+                        <div class="site-branding">
+                            <a class="home-link" href="@Url.Action("Index","Home")" title="Zester" rel="home">
+                                <img id="logo-img" class="img-center" src="~/Design/sunshinelogo.png" alt="logo-img" style="margin-top:-7px;">
+                                <b style="color: white; font-size: xx-large; font-family: 'Century Schoolbook'">Sunshine Catering</b>
+                            </a>
+                        </div><!-- site-branding end -->
+                        <!--site-navigation -->
+                        <div id="site-navigation" class="site-navigation">
+                            <!-- header-icons -->
+                            <!-- header-icons end -->
+                            <div class="header-btn">
+                                <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-border ttm-btn-color-skincolor" href="#" onclick="AssignTo()">ORDER ONLINE</a>
+                            </div>
+
+                            <div class="ttm-menu-toggle">
+                                <input type="checkbox" id="menu-toggle-form" />
+                                <label for="menu-toggle-form" class="ttm-menu-toggle-block">
+                                    <span class="toggle-block toggle-blocks-1"></span>
+                                    <span class="toggle-block toggle-blocks-2"></span>
+                                    <span class="toggle-block toggle-blocks-3"></span>
+                                </label>
+                            </div>
+                            <nav id="menu" class="menu">
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="@Url.Action("Index","Home")">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("About","Home")">About Us</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Services", "Home")">Services</a>
+                                    </li>
+
+                                    <li class="active">
+                                        <a href="@Url.Action("Menu","Home")">Menu</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Gallery","Home")">Gallery</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Contact","Home")">Contact</a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div><!-- site-navigation end-->
+                    </div>
+                </div>
+            </div>
+        </div><!-- ttm-stickable-header-w end-->
+    </div><!--ttm-header-wrap end -->
+</header>
+
+
+<!-- page-title -->
+<div class="ttm-page-title-row">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-box">
+                    <div class="page-title-heading">
+                        <h1 class="title">Menu</h1>
+                    </div><!-- /.page-title-captions -->
+
+                </div>
+            </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</div>
+<!-- page-title END-->
+<!--site-main start-->
+<div class="site-main">
+    <!-- menu-tab-section -->
+    <section class="ttm-row menu-tab-section ttm-bg ttm-bgimage-yes ttm-bgcolor-grey clearfix">
+        <div class="container">
+            <div class="row">
+                <!-- row -->
+                <div class="col-md-12">
+                    <!-- section title -->
+                    <div class="section-title text-center clearfix">
+                        <div class="title-header">
+                            <h5>Food at first sight</h5>
+                            <h2 class="title">Select Items to Book</h2>
+                        </div>
+                        <div class="heading-seperator">
+                            <span></span>
+                        </div>
+                    </div><!-- section title end -->
+                </div>
+            </div><!-- row end-->
+            <div class="row" style="margin-top:-20px;">
+                <!-- row -->
+                <div class="col-lg-12">
+                    <div class="ttm-tabs ttm-tab-style-classic style1">
+
+                        <div class="content-tab w-100">
+
+                            <div class="content-inner active">
+
+                                <div class="section-title text-center clearfix" style="margin-top:-10px;">
+                                    <div class="title-header">
+                                        <h3 style="text-transform:uppercase;font-weight:bold;color:#4800ff">Break- Fast</h3>
+                                    </div>
+                                    <div class="heading-seperator">
+                                        <span></span>
+                                    </div>
+                                </div>
+
+                                <br />
+
+                                <div class="row" style="margin-top:-60px;">
+
+                                    @if (menuitems != null)
+                                    {
+                                        foreach (var i in menuitems.Where(s => s.CategoryName == "Break Fast"))
+                                        {
+                                            <div class="col-md-12 col-sm-6 col-xs-6 col-lg-6">
+                                                <div class="row no-gutters featured-imagebox featured-imagebox-menu left-image">
+                                                    <div class="col-md-4 col-sm-4">
+                                                        <div class="featured-thumbnail">
+                                                            <!-- featured-image -->
+                                                            <img class="img-fluid" src="@Global.WebsiteUrl()MenuImages/@i.ItemImage" style="height:125px;width:150px;" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8 col-sm-8">
+                                                        <div class="featured-content">
+                                                            <!-- featured-content -->
+                                                            <div class="featured-title">
+                                                                <input type="checkbox" id="MenuItemID" name="MenuItemID[]" value="@i.DetailMenuID" onclick="ChangeColor('@i.DetailMenuID')" style="width:15px;height:15px;" />
+                                                                <h5 id="ItemName">@i.ItemName</h5>
+                                                            </div>
+                                                            <div class="featured-desc">
+                                                                <p>@i.ItemDescription</p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+
+
+                                </div>
+
+                                <br />
+
+                                <div class="section-title text-center clearfix">
+                                    <div class="title-header">
+                                        <h3 style="text-transform:uppercase;font-weight:bold;color:#4800ff">High - Tea</h3>
+                                    </div>
+                                    <div class="heading-seperator">
+                                        <span></span>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:-50px;">
+
+                                    @if (menuitems != null)
+                                    {
+                                        foreach (var i in menuitems.Where(s => s.CategoryName == "High Tea"))
+                                        {
+                                            <div class="col-md-12 col-sm-6 col-lg-6">
+                                                <div class="row no-gutters featured-imagebox featured-imagebox-menu left-image">
+                                                    <div class="col-md-4 col-sm-4">
+                                                        <div class="featured-thumbnail">
+                                                            <!-- featured-image -->
+                                                            <img class="img-fluid" src="@Global.WebsiteUrl()MenuImages/@i.ItemImage" style="height:125px;width:150px;" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8 col-sm-8">
+                                                        <div class="featured-content">
+                                                            <!-- featured-content -->
+                                                            <div class="featured-title">
+                                                                <input type="checkbox" id="MenuItemID" name="MenuItemID[]" value="@i.DetailMenuID" style="width:15px;height:15px;" />
+                                                                <h5>@i.ItemName</h5>
+                                                            </div>
+                                                            <div class="featured-desc">
+                                                                <p>@i.ItemDescription</p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+
+
+                                </div>
+
+                                <br />
+
+                                <div class="section-title text-center clearfix">
+                                    <div class="title-header">
+                                        <h3 style="text-transform:uppercase;font-weight:bold;color:#4800ff">Lunch</h3>
+                                    </div>
+                                    <div class="heading-seperator">
+                                        <span></span>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:-50px;">
+
+                                    @if (menuitems != null)
+                                    {
+                                        foreach (var i in menuitems.Where(s => s.CategoryName == "Lunch"))
+                                        {
+                                            <div class="col-md-12 col-sm-6 col-lg-6">
+                                                <div class="row no-gutters featured-imagebox featured-imagebox-menu left-image">
+                                                    <div class="col-md-4 col-sm-4">
+                                                        <div class="featured-thumbnail">
+                                                            <!-- featured-image -->
+                                                            <img class="img-fluid" src="@Global.WebsiteUrl()MenuImages/@i.ItemImage" style="height:125px;width:150px;" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8 col-sm-8">
+                                                        <div class="featured-content">
+                                                            <!-- featured-content -->
+                                                            <div class="featured-title">
+                                                                <input type="checkbox" id="MenuItemID" name="MenuItemID[]" value="@i.DetailMenuID" style="width:15px;height:15px;" />
+                                                                <h5>@i.ItemName</h5>
+                                                            </div>
+                                                            <div class="featured-desc">
+                                                                <p>@i.ItemDescription</p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+                                    else
+                                    {
+                                        <div class="col-md-12 col-sm-6 col-lg-6">
+                                            <div class="row no-gutters featured-imagebox featured-imagebox-menu left-image">
+                                                <center style="font-weight:bold;color:#156730">----No Menu Item Found----</center>
+                                            </div>
+                                        </div>
+                                    }
+
+
+                                </div>
+
+
+
+                                <br />
+
+                                <div class="section-title text-center clearfix">
+                                    <div class="title-header">
+                                        <h3 style="text-transform:uppercase;font-weight:bold;color:#4800ff">Dinner</h3>
+                                    </div>
+                                    <div class="heading-seperator">
+                                        <span></span>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:-50px;">
+
+                                    @if (menuitems != null)
+                                    {
+                                        foreach (var i in menuitems.Where(s => s.CategoryName == "Dinner"))
+                                        {
+                                            <div class="col-md-12 col-sm-6 col-lg-6">
+                                                <div class="row no-gutters featured-imagebox featured-imagebox-menu left-image">
+                                                    <div class="col-md-4 col-sm-4">
+                                                        <div class="featured-thumbnail">
+                                                            <!-- featured-image -->
+                                                            <img class="img-fluid" src="@Global.WebsiteUrl()MenuImages/@i.ItemImage" style="height:125px;width:150px;" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8 col-sm-8">
+                                                        <div class="featured-content">
+                                                            <!-- featured-content -->
+                                                            <div class="featured-title">
+                                                                <input type="checkbox" id="MenuItemID" name="MenuItemID[]" value="@i.DetailMenuID" style="width:15px;height:15px;" />
+                                                                <h5>@i.ItemName</h5>
+                                                            </div>
+                                                            <div class="featured-desc">
+                                                                <p>@i.ItemDescription</p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+
+                                    }
+
+                                    else
+                                    {
+
+                                        <div class="col-md-12 col-sm-6 col-lg-6">
+                                            <div class="row no-gutters featured-imagebox featured-imagebox-menu left-image">
+                                                <center style="font-weight:bold;color:#156730">----No Menu Item Found----</center>
+                                            </div>
+                                        </div>
+
+
+
+                                    }
+
+
+                                </div>
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+
+<script>
+
+
+    function GetMenuItems(menu) {
+
+        //document.getElementById('categoryname').value = categoryname;
+        //var stateId = $("#stateDropDown").val();
+        $('#MenuItems').empty();
+        $.ajax({
+            type: "post",
+            url: "/Home/GetMenuItem",
+            data: {
+                Category: menu
+            },
+            datatype: "json",
+            success: function(data) {
+                var content=null;
+
+                for(var i=0;i<data.length;i++) {
+
+                    //var namre=data[i].FoodName;
+                    content='<div class="col-md-12 col-lg-6"><div class="row no-gutters featured-imagebox featured-imagebox-menu left-image">';
+                    conten=content+'<div class="col-md-4 col-sm-4"><div class="featured-thumbnail"><img class="img-fluid" src="@Global.WebsiteUrl()MenuImages/'+data[i].ItemImage+'" style="height:50px;width:70px" alt=""></div></div>';
+                    content=content+'<div class="col-md-8 col-sm-8"><div class="featured-content"><div class="featured-title">  <input type="checkbox" id="MenuItemID" name="MenuItemID[]" value="'+data[i].DetailMenuID+'" style="width:15px;height:15px;" />   <h5>'+data[i].ItemName+'</h5></div>';
+                    content=content+'<div class="featured-desc"><p>'+data[i].ItemDescription+'</p></div></div>';
+                    content=content+'</div></div></div>';
+                    $('#MenuItems').append(content);
+                }
+            }
+        });
+
+
+    }
+
+</script>
+
+@Html.Hidden("RedirectToBook", Url.Action("MenuOrderDetail", "Home"))
+
+<script type="text/javascript">
+
+    function AssignTo() {
+        var cid=new Array();
+        $.each($("input[name='MenuItemID[]']"),function() {
+            if($(this).prop("checked")) {
+                cid.push($(this).val());
+            }
+
+        });
+        var len=cid.length;
+        var url=$("#RedirectToBook").val()+"?MenuItemID="+cid+"&Len="+len;
+        location.href=url;
+
+    }
+
+</script>
+
+
+
+<script>
+
+    $.each($("input[name='MenuItemID[]']"),function() {
+        if($(this).prop("checked")) {
+            var x=document.getElementById('ItemName');
+            x.style.color='#00FF00';
+        }
+        else {
+            var x=document.getElementById('ItemName');
+            x.style.color='#080302';
+        }
+
+    });
+
+</script>
+
+
+<script>
+
+    function ChangeColor(detailid) {
+
+
+
+
+        var checkid=document.getElementById('MenuItemID');
+
+        if(checkid.checked==true) {
+            var x=document.getElementById('ItemName');
+            x.style.color='#00FF00';
+        }
+        else {
+            var x=document.getElementById('ItemName');
+            x.style.color='#080302';
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+</script>
+

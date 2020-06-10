@@ -1,0 +1,235 @@
+﻿@using CateringSite.DAL;
+@using CateringSite.Models;
+
+@{
+    ViewBag.Title = "MenuItems";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<MenuItemDetail> detail = ViewData["Detail"] as List<MenuItemDetail>;
+
+    int buttoncount = 0;
+}
+
+<link href="~/Design/css/main.css" rel="stylesheet" />
+<link href="~/Design/css/animate.css" rel="stylesheet" />
+<link href="~/Design/css/animate.min.css" rel="stylesheet" />
+<link href="~/Design/revolution/css/settings.css" rel="stylesheet" />
+<link href="~/Design/css/responsive.css" rel="stylesheet" />
+<link href="~/Design/css/font-awesome.css" rel="stylesheet" />
+
+<section class="contact-section">
+
+    <div class="auto-container">
+        <!--Section Title-->
+        <div class="sec-title-one">
+            <h2 style="font-family:'Arial Rounded MT'">Add Menu-Items </h2>
+        </div>
+
+        <div class="">
+
+            @using (Html.BeginForm("MenuItems", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "MenuItems", role = "form", area = "Admin" }))
+            {
+
+                <form method="post" action="#" id="contact-form">
+                    <div class="row clearfix">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="font-weight:bold">Menu-Category <span class="text-danger">*</span></label>
+                                @Html.DropDownList("CategoryID", null, "--- Select Menu Category ---", htmlAttributes: new { @class = "form-control", @id = "CategoryID", required = "" })
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="card-box">
+
+                                <div class="form-group row">
+                                    <div class="table-responsive">
+                                        <table id="FaqsTable" class="table table-bordered nobottommargin">
+                                            <tr style="background-color:#b5aeae">
+
+                                                <th style="text-align: center; width:250px;">Menu Item Name</th>
+                                                <th style="text-align: center; width: 150px;">Image </th>
+                                                <th style="text-align: center; width: 150px;">Description</th>
+                                                <th style="text-align: center; width: 100px;">Action</th>
+                                            <tr />
+                                            @if (Model == null)
+                                            {
+                                                <tr>
+                                                    <td style="display:none">
+                                                        <input type="text" class="form-control" id="DetailMenuID" name="DetailMenuID" value="0" placeholder="ItemName" style="width:180px" required />
+
+                                                    </td>
+
+                                                    <td>
+                                                        <input type="text" class="form-control" id="ItemName" name="ItemName" value="" placeholder="Enter Menu Item Name" style="width:250px" required />
+
+                                                    </td>
+
+                                                    <td>
+                                                        <input type="file" class="form-control" id="ItemImage" name="ItemImage" value="" placeholder="ItemImage" style="width:150px" required />
+
+                                                    </td>
+
+                                                    <td>
+
+                                                        <textarea id="ItemDescription" name="ItemDescription" class="form-control" placeholder="Enter Menu Item Description" style="width:500px" cols="10" rows="3" required></textarea>
+                                                        @*<input type="text" class="form-control" id="Description" name="Description[]" value="" placeholder="Enter Sub-Product Description" style="width:400px" required />*@
+
+                                                    </td>
+
+
+                                                    <td>
+                                                        <a href="javascript:void(0);" id="addCF"><i class="fa fa-plus" style="color:green"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            else
+                                            {
+                                                foreach (var it in detail)
+                                                {
+                                                    buttoncount++;
+                                                    <tr>
+                                                        <td style="display:none">
+                                                            <input type="text" class="form-control" id="DetailMenuID" name="DetailMenuID" value="@it.DetailMenuID" placeholder="ItemName" style="width:180px" required />
+
+                                                        </td>
+
+                                                        <td>
+                                                            <input type="text" class="form-control" id="ItemName" name="ItemName" value="@it.ItemName" placeholder="Enter Menu Item Name" style="width: 250px" required />
+
+                                                        </td>
+
+                                                        <td>
+                                                            <input type="file" class="form-control" id="ItemImage" name="ItemImage" value="@it.ItemImage" placeholder="ItemImage" style="width:150px" required />
+
+                                                        </td>
+
+                                                        <td>
+                                                            <textarea id="ItemDescription" name="ItemDescription" class="form-control" placeholder="Enter Menu Item Description" style="width:500px" cols="10" rows="3" required>@it.ItemDescription</textarea>
+
+                                                        </td>
+
+
+                                                        <td class="hidden" style="display:none">
+                                                            <input type="text" class="Flag sm-form-control" id="Flag" name="Flag[]" value="U" placeholder="Flag" />
+                                                        </td>
+                                                        @if (buttoncount == 1)
+                                                        {
+                                                            <td>
+                                                                <a href="javascript:void(0);" id="addCF"><i class="fa fa-plus" style="color:green"></i></a>
+                                                            </td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>
+                                                                <a href="javascript:void(0);" id="remCF" onclick="RemoveItem('@it.DetailMenuID')"><i class="fa fa-trash-o m-r-5" style="color:red"></i></a>
+                                                            </td>
+                                                        }
+                                                    </tr>
+                                                }
+                                            }
+                                        </table>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success" style="float:right">Submit</button>
+
+                </form>
+
+            }
+
+        </div>
+
+
+    </div>
+</section>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Scripts/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/sweetalert.js"></script>
+
+
+
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function() {
+        var iCnt=0;
+        $('#FaqsTable').on('click','#addCF',function() {
+            if(iCnt<=100) {
+
+                iCnt=iCnt+1;
+
+
+                $("#FaqsTable").append('<tr>'+
+                    //'<td> <div class=" col-md-9"><div class="gt_privacy_field default_width">  <input type="text" class="c_ph" id="POID" name="POID[]" value="" placeholder="POID" /></div></div></td>' +
+                    '<td style="display:none"><input type="text" class="c_ph" id="DetailMenuID" name="DetailMenuID" value="0" placeholder="Select Item" style="width:180px" /></td>'+
+               '<td><input type="text" class="form-control" id="ItemName" name="ItemName" value="" placeholder="Enter Menu Item Name" style="width:250px"/></td>'+
+               '<td><input type="file" class="form-control" id="ItemImage" name="ItemImage" value="" placeholder="Enter Sub-Product Name" style="width:150px"/></td>'+
+               '<td> <textarea id="ItemDescription" name="ItemDescription" class="form-control" placeholder="Enter Menu Item Description" style="width:500px" cols="10" rows="3" required></textarea>'+
+
+
+
+
+         '<td class="hidden" style="display:none"><input type="text" class="Flag sm-form-control" id="Flag" name="Flag[]" value="I" placeholder="Flag" /></td>'+
+        '<td><a href="javascript:void(0);" id="remCF"><i class="fa fa-trash-o m-r-5" style="color:red"></i></a></td> '+
+        '</tr>');
+            }
+        });
+        $("#FaqsTable").on('click','#remCF',function() {
+            var flag=$(this).closest('tr').find(".Flag").val();
+            if(flag=="I") {
+                $(this).closest('tr').remove();
+            }
+            else(flag=="U")
+            {
+                $(this).closest("tr").hide();
+                $(this).closest('tr').find(".Flag").val("D");
+            }
+        });
+    });
+
+</script>
+
+
+
+<script type="text/javascript">
+    $(function() {
+        var msg='@TempData["example"]';
+        if(msg=='Succeeded') {
+            sweetAlert({
+                title: "Succeeded!",
+                text: "Menu-Item has been Added SUCCESSFULLY.",
+                type: "success"
+            },
+                                  function() {
+                                      var url=$("#RedirectToHome").val();
+                                      location.href=url;
+                                  });
+
+        }
+        else {
+
+
+        }
+    });
+
+</script>

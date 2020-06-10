@@ -1,0 +1,129 @@
+﻿@model CateringSite.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = "";
+}
+
+
+<head>
+    <title>Sunshine Caterers : Login</title>
+    <!-- metatags-->
+    <link rel="shortcut icon" href="~/Design/sunshinelogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Sunshine Caterers" />
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Meta tag Keywords -->
+
+    <link href="~/Logindesign/css/style.css" rel="stylesheet" />
+
+    <!--online fonts-->
+    <link href="//fonts.googleapis.com/css?family=Lobster&amp;subset=cyrillic,latin-ext,vietnamese" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Righteous&amp;subset=latin-ext" rel="stylesheet">
+    <!--//online fonts-->
+</head>
+
+
+
+<body>
+    <h1>S<span>u</span>nS<span>hi</span>ne C<span>a</span>t<span>erers</span> l<span>o</span>gin</h1>
+    <div class="wthree-form">
+        <h2>Fill out the form below to login</h2>
+        <br />
+        <div class="w3l-login form" style="margin-top:20px;">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true)
+
+                <form action="#" method="post">
+                    <div class="form-sub-w3">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "User Name" })
+                        <br />
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                    <div class="form-sub-w3">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "password" }) <br />
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                    <label class="anim">
+                        <input type="checkbox" class="checkbox">
+                        <span>Remember Me</span>
+                    </label>
+                    <div class="submit-agileits">
+                        <input type="submit" value="Login">
+                    </div>
+
+                </form>
+            }
+        </div>
+    </div>
+
+</body>
+
+
+@*<h2>@ViewBag.Title.</h2>
+    <div class="row">
+        <div class="col-md-8">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4>Use a local account to log in.</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Log in" class="btn btn-default" />
+                        </div>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Register", "Register") if you don't have a local account.
+                    </p>
+                }
+            </section>
+        </div>
+        <div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
+
+
+
+<script>
+    history.pushState(null,null,location.href);
+    window.onpopstate=function() {
+        history.go(1);
+    };
+</script>

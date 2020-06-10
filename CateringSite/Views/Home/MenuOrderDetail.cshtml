@@ -1,0 +1,383 @@
+﻿@using CateringSite.DAL;
+@using CateringSite.Models;
+@{
+    ViewBag.Title = "MenuOrderDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<AllMenus> menuitem = ViewData["MenuList"] as List<AllMenus>;
+    List<MenuCategoryMaster> menumaster = ViewData["Menumaster"] as List<MenuCategoryMaster>;
+
+}
+
+<header id="masthead" class="header ttm-header-style-01">
+    <!-- ttm-header-wrap -->
+    <div class="ttm-header-wrap">
+        <!-- ttm-stickable-header-w -->
+        <div id="ttm-stickable-header-w" class="ttm-stickable-header-w ttm-bgcolor-darkgrey clearfix">
+            <div id="site-header-menu" class="site-header-menu">
+                <div class="site-header-menu-inner ttm-stickable-header">
+                    <div class="container-fluid">
+                        <!-- site-branding -->
+                        <div class="site-branding">
+                            <a class="home-link" href="@Url.Action("Index","Home")" title="Zester" rel="home">
+                                <img id="logo-img" class="img-center" src="~/Design/sunshinelogo.png" alt="logo-img" style="margin-top:-7px;">
+                                <b style="color: white; font-size: xx-large; font-family: 'Century Schoolbook'">Sunshine Catering</b>
+                            </a>
+                        </div><!-- site-branding end -->
+                        <!--site-navigation -->
+                        <div id="site-navigation" class="site-navigation">
+                            <!-- header-icons -->
+                            <!-- header-icons end -->
+                            <div class="header-btn">
+                                <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-border ttm-btn-color-skincolor" href="@Url.Action("MenuOrderOnline","Home")">ORDER ONLINE</a>
+                            </div>
+
+                            <div class="ttm-menu-toggle">
+                                <input type="checkbox" id="menu-toggle-form" />
+                                <label for="menu-toggle-form" class="ttm-menu-toggle-block">
+                                    <span class="toggle-block toggle-blocks-1"></span>
+                                    <span class="toggle-block toggle-blocks-2"></span>
+                                    <span class="toggle-block toggle-blocks-3"></span>
+                                </label>
+                            </div>
+                            <nav id="menu" class="menu">
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="@Url.Action("Index","Home")">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("About","Home")">About Us</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Services", "Home")">Services</a>
+                                    </li>
+
+                                    <li class="active">
+                                        <a href="@Url.Action("Menu","Home")">Menu</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Gallery","Home")">Gallery</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Contact","Home")">Contact</a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div><!-- site-navigation end-->
+                    </div>
+                </div>
+            </div>
+        </div><!-- ttm-stickable-header-w end-->
+    </div><!--ttm-header-wrap end -->
+</header>
+
+<div class="ttm-page-title-row">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-box">
+                    <div class="page-title-heading">
+                        <h1 class="title">Menu</h1>
+                    </div><!-- /.page-title-captions -->
+
+                </div>
+            </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</div>
+
+<div class="site-main">
+    <!-- menu-tab-section -->
+    <section class="ttm-row last-section bg-img14 clearfix">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="ttm-bgcolor-darkgrey ttm-bg col-bg-img-two ttm-col-bgimage-yes box-shadow p-15 h-auto">
+                        <div class="ttm-col-wrapper-bg-layer ttm-bg-layer">
+                            <div class="ttm-bg-layer-inner"></div>
+                        </div>
+                        <div class="layer-content">
+                            <div class="spacing-5 border-dashed text-center ttm-skin-border">
+                                <!-- section title -->
+                                <div class="section-title clearfix">
+                                    <div class="title-header mb-10">
+                                        <h5>Sunshine Catering</h5>
+                                        <h3 class="title">Selected Menu</h3>
+                                    </div>
+                                </div><!-- section title end -->
+                                @*<h5 class="ttm-textcolor-skincolor mb-8">Monday - Friday</h5>*@
+
+                                @if (menuitem != null)
+                                {
+
+                                    foreach (var i in menuitem)
+                                    {
+                                        var catname = menumaster.Where(s => s.CategoryID == @i.CategoryID).FirstOrDefault();
+                                        <b style="color:red">@catname.CategoryName</b>
+
+                                        <input type="text" id="cid[]" name="cid[]" value="@i.DetailMenuID" style="display:none" />
+                                        <p class="mb-0" style="font-weight:bold">@i.ItemName</p>
+
+                                    }
+                                }
+
+
+                                <hr class="light-border mb-30">
+                                <a class="ttm-btn ttm-btn-size-md ttm-btn-bgcolor-skincolor" href="#">Call: +91-9425509752</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="spacing-4 ttm-skin-border border-solid-10">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- section title -->
+                                <div class="section-title text-center clearfix">
+                                    <div class="title-header mb-30">
+                                        <h5>reservation</h5>
+                                        <h2 class="title">Fill Booking Detail</h2>
+                                    </div>
+                                    <div class="heading-seperator">
+                                        <span></span>
+                                    </div>
+                                </div><!-- section title end -->
+                            </div>
+                        </div>
+                        <form id="ttm-quote-form" class="row ttm-quote-form clearfix mt-55" method="post" action="#">
+
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input name="name" type="text" id="ClientName" class="form-control with-icon" placeholder="Enter Your Name" required="required">
+                                    <span class="input-group-icon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input name="name" type="text" id="NoofPeople" class="form-control with-icon" placeholder="For People" required="required">
+                                    <span class="input-group-icon">
+                                        <i class="fa fa-users"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input name="name" type="date" id="BookDate" class="form-control with-icon" placeholder="Date" required="required">
+                                    <span class="input-group-icon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input name="address" type="time" id="BookTime" placeholder="Time" required="required" class="form-control with-icon">
+                                    <span class="input-group-icon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input name="address" type="email" id="Email" placeholder="Enter Email-ID" required="required" class="form-control with-icon">
+                                    <span class="input-group-icon">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input name="address" type="text" id="MobileNo" onkeypress="javascript:return isNumber(event)" maxlength="10" placeholder="Enter Phone No." required="required" class="form-control with-icon">
+                                    <span class="input-group-icon">
+                                        <i class="fa fa-phone"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                <div class="form-group">
+                                    <input name="address" type="text" id="Address" placeholder="Enter Your Address" required="required" class="form-control with-icon">
+                                    <span class="input-group-icon">
+                                        <i class="fa fa-location-arrow"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 offset-md-4 text-center">
+                                <div class="form-group text-center">
+                                    <button type="submit" id="submit" class="ttm-btn ttm-btn-size-md ttm-btn-bgcolor-darkgrey w-100" onclick="BookMenu()" value="">
+                                        book A menu
+                                    </button>
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div><!-- row END-->
+        </div>
+    </section>
+
+
+
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Scripts/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/sweetalert.js"></script>
+
+@Html.Hidden("RedirectToHome", Url.Action("MenuOrderDetail", "Home"))
+@Html.Hidden("RedirectToPrint", Url.Action("PrintMenuOrder", "Home"))
+
+<script type="text/javascript">
+    $(function() {
+        var msg='@TempData["Example"]';
+        var mainid='@TempData["Result"]' 
+        if(msg=='Succeeded') {
+            sweetAlert({
+                title: "Succeeded!",
+                text: "Your Order has been Submitted SUCCESSFULLY.",
+                type: "success"
+            },
+                                  function() {
+                                      //var url=$("#Download").val()+"?DistributorMainID="+mainid;
+                                     var url=$("#RedirectToPrint").val()+"?BookingID="+mainid;
+                                      location.href=url;
+                                  });
+
+        }
+        else {
+
+
+        }
+    });
+
+</script>
+
+
+
+<script>
+
+    function BookMenu() {
+        var cid=new Array();
+
+        $.each($("input[name='cid[]']"),function() {
+            cid.push($(this).val());
+
+        });
+
+
+        if($('#ClientName').val()==""||$('#NoofPeople').val()=="" || $('#BookDate').val()==""|| $('#BookTime').val()=="" || $('#Email').val()=="" || $('#MobileNo').val()=="" || $('#Address').val()=="" )
+        {
+            sweetAlert("Oops...","Please Check All Fields!","error")
+        }
+        else{
+            $.ajax({
+                type: "post",
+                url: "/Home/PostBookMenu",
+
+                data: {
+
+                    DetailMenuID: cid,
+                    ClientName: $('#ClientName').val(),
+                    NoofPeople: $('#NoofPeople').val(),
+                    BookDate: $('#BookDate').val(),
+                    BookTime: $('#BookTime').val(),
+                    Email: $('#Email').val(),
+                    MobileNo: $('#MobileNo').val(),
+                    Address: $('#Address').val(),
+
+                },
+                datatype: "json",
+                traditional:true,
+
+                success: function(data) {
+                    var mainid='@TempData["Result"]' 
+                    $('.form-process').fadeOut();
+                    if(data=="Succeeded") {
+                        sweetAlert({
+                            title: "Succeeded!",
+                            text: "Your Order has been Submitted SUCCESSFULLY.",
+                            type: "success"
+                        },
+                                       function() {
+                                           //var url=$("#Download").val()+"?DistributorMainID="+mainid;
+                                           var url=$("#RedirectToPrint").val()+"?BookingID="+mainid;
+                                           location.href=url;
+                                       });
+
+                        $.alert({
+                            title: 'Cheers',
+                            content: 'Your Data has been saved <b> SUCCESSFULLY.</b>',
+                            confirmButton: 'OK',
+                            confirmButtonClass: 'btn-info',
+                            icon: 'icon-thumbs-up icon-2x ',
+                            animation: 'zoom',
+                            confirm: function() {
+                                var url=$("#RedirectToClient").val();
+                                location.href=url;
+                            }
+                        });
+                    }
+                    if(data=="Unsucceeded") {
+                        $.alert({
+                            title: 'Sorry',
+                            content: 'Something went <b>wrong.</b>',
+                            confirmButton: 'OK',
+                            confirmButtonClass: 'btn-info',
+                            icon: 'icon-thumbs-down icon-2x ',
+                            animation: 'zoom',
+                            confirm: function() {
+                                var url=$("#RedirectToClient").val();
+                                location.href=url;
+                            }
+                        });
+                    }
+                    if(data=="Exists") {
+                        $.alert({
+                            title: 'Sorry',
+                            content: 'Your Data is already <b> EXISTS.</b>',
+                            confirmButton: 'OK',
+                            confirmButtonClass: 'btn-info',
+                            icon: 'icon-info-sign icon-2x ',
+                            animation: 'zoom',
+                            confirm: function() {
+                                var url=$("#RedirectToClient").val();
+                                location.href=url;
+                            }
+                        });
+                    }
+                    else {
+                        var url=$("#RedirectToClient").val();
+                        location.href=url;
+                    }
+                }
+            });
+        }
+
+
+
+
+
+
+    }
+
+</script>
+
+<script>
+    // WRITE THE VALIDATION SCRIPT.
+    function isNumber(evt) {
+        var iKeyCode=(evt.which)?evt.which:evt.keyCode
+        if(iKeyCode!=46&&iKeyCode>31&&(iKeyCode<48||iKeyCode>57))
+            return false;
+
+        return true;
+    }
+</script>

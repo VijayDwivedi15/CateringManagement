@@ -1,0 +1,309 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<header id="masthead" class="header ttm-header-style-01">
+    <!-- ttm-header-wrap -->
+    <div class="ttm-header-wrap">
+        <!-- ttm-stickable-header-w -->
+        <div id="ttm-stickable-header-w" class="ttm-stickable-header-w ttm-bgcolor-darkgrey clearfix">
+            <div id="site-header-menu" class="site-header-menu">
+                <div class="site-header-menu-inner ttm-stickable-header">
+                    <div class="container-fluid">
+                        <!-- site-branding -->
+                        <div class="site-branding">
+                            <a class="home-link" href="@Url.Action("Index","Home")" title="Zester" rel="home">
+                                <img id="logo-img" class="img-center" src="~/Design/sunshinelogo.png" alt="logo-img" style="margin-top:-7px;">
+                                <b style="color: white; font-size: xx-large; font-family: 'Century Schoolbook'">Sunshine Catering</b>
+                            </a>
+                        </div><!-- site-branding end -->
+                        <!--site-navigation -->
+                        <div id="site-navigation" class="site-navigation">
+                            <!-- header-icons -->
+                            <!-- header-icons end -->
+                            @*<div class="header-btn">
+                                    <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-border ttm-btn-color-skincolor" href="#">ORDER ONLINE</a>
+                                </div>*@
+
+                            <div class="ttm-menu-toggle">
+                                <input type="checkbox" id="menu-toggle-form" />
+                                <label for="menu-toggle-form" class="ttm-menu-toggle-block">
+                                    <span class="toggle-block toggle-blocks-1"></span>
+                                    <span class="toggle-block toggle-blocks-2"></span>
+                                    <span class="toggle-block toggle-blocks-3"></span>
+                                </label>
+                            </div>
+                            <nav id="menu" class="menu">
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="@Url.Action("Index","Home")">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("About","Home")">About Us</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Services", "Home")">Services</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Menu","Home")">Menu</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Gallery","Home")">Gallery</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="@Url.Action("Contact","Home")">Contact</a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div><!-- site-navigation end-->
+                    </div>
+                </div>
+            </div>
+        </div><!-- ttm-stickable-header-w end-->
+    </div><!--ttm-header-wrap end -->
+</header>
+
+
+<!-- page-title -->
+<div class="ttm-page-title-row">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-box">
+                    <div class="page-title-heading">
+                        <h1 class="title">Contact Us</h1>
+                    </div><!-- /.page-title-captions -->
+
+                </div>
+            </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</div>
+<!-- page-title END-->
+<!--site-main start-->
+<div class="site-main">
+    <!-- contact-section -->
+    <section class="ttm-row contact-section clearfix">
+        <div class="container">
+            <div class="row no-gutters">
+                <!-- row -->
+                <div class="col-lg-8">
+                    <div class="spacing-9">
+                        <!-- section title -->
+                        <div class="section-title text-left clearfix">
+                            <div class="title-header mb-90">
+                                <h5>CONTACT WITH US</h5>
+                                <h2 class="title">Write Us A Message</h2>
+                            </div>
+                            <div class="heading-seperator">
+                                <span></span>
+                            </div>
+                        </div><!-- section title end -->
+                      
+
+                            <form id="ttm-quote-form" class="row ttm-quote-form clearfix style2" method="post" action="#">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input name="Name" type="text" class="form-control with-grey-bg" placeholder="Full Name" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input name="MobileNo" type="text" placeholder="Phone Number" maxlength="10" required onkeypress="javascript:return isNumber(event)" class="form-control with-grey-bg">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input name="EmailID" type="text" placeholder="Email Address" required="required" class="form-control with-grey-bg">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input name="Subject" type="text" placeholder="Subject" required="required" class="form-control with-grey-bg">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <textarea name="Message" rows="5" placeholder="Write A Massage..." required="required" class="form-control with-grey-bg"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group text-left">
+                                        <button type="submit" id="submit" class="ttm-btn ttm-btn-size-md ttm-btn-bgcolor-skincolor" value="">
+                                            Send A Message
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                       
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <!-- col-bg-img-two -->
+                    <div class="ttm-bgcolor-grey ttm-bg ttm-col-bgimage-yes ttm-right-span spacing-10">
+                        <div class="ttm-col-wrapper-bg-layer ttm-bg-layer">
+                            <div class="ttm-bg-layer-inner"></div>
+                        </div>
+                        <div class="layer-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- featured-icon-box-->
+                                    <div class="featured-icon-box left-icon style4">
+                                        <div class="featured-icon">
+                                            <!-- featured-icon-->
+                                            <div class="ttm-icon ttm-icon_element-background-color-grey ttm-icon_element-size-md ttm-icon_element-style-round">
+                                                <i class="ti ti-location-pin"></i>
+                                            </div>
+                                        </div><!-- featured-icon -->
+                                        <div class="featured-content">
+                                            <!-- featured-content -->
+                                            <div class="featured-title">
+                                                <!-- featured-title -->
+                                                <h4>Address</h4>
+                                            </div>
+                                            <div class="featured-desc">
+                                                <!-- featured-desc -->
+                                                <p class="mb-0">Shyam Sunder Complex<br /> Near Kamal daal mill<br /> Gudhiyari Raipur (C.G.)</p>
+                                            </div>
+                                        </div><!-- featured-content -->
+                                    </div><!-- featured-icon-box end-->
+                                </div>
+                                <div class="col-md-12">
+                                    <!-- featured-icon-box-->
+                                    <div class="featured-icon-box left-icon style4">
+                                        <div class="featured-icon">
+                                            <!-- featured-icon-->
+                                            <div class="ttm-icon ttm-icon_element-background-color-grey ttm-icon_element-size-md ttm-icon_element-style-round">
+                                                <i class="ti ti-headphone-alt"></i>
+                                            </div>
+                                        </div><!-- featured-icon -->
+                                        <div class="featured-content">
+                                            <!-- featured-content -->
+                                            <div class="featured-title">
+                                                <!-- featured-title -->
+                                                <h4>Call-Us</h4>
+                                            </div>
+                                            <div class="featured-desc">
+                                                <!-- featured-desc -->
+                                                <p class="mb-0">(+91) 8770993087 <br /> (+91) 9425509752</p>
+                                            </div>
+                                        </div><!-- featured-content -->
+                                    </div><!-- featured-icon-box end-->
+                                </div>
+                                <div class="col-md-12">
+                                    <!-- featured-icon-box-->
+                                    <div class="featured-icon-box left-icon style4">
+                                        <div class="featured-icon">
+                                            <!-- featured-icon-->
+                                            <div class="ttm-icon ttm-icon_element-background-color-grey ttm-icon_element-size-md ttm-icon_element-style-round">
+                                                <i class="ti ti-email"></i>
+                                            </div>
+                                        </div><!-- featured-icon -->
+                                        <div class="featured-content">
+                                            <!-- featured-content -->
+                                            <div class="featured-title">
+                                                <!-- featured-title -->
+                                                <h4>Email</h4>
+                                            </div>
+                                            <div class="featured-desc">
+                                                <!-- featured-desc -->
+                                                <p class="mb-0">cgho@rediffmail.com</p>
+                                            </div>
+                                        </div><!-- featured-content -->
+                                    </div><!-- featured-icon-box end-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- row end-->
+        </div>
+    </section>
+    <!-- contact-section -->
+    <!-- map-section -->
+    <div class="ttm-row map-section clearfix">
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--map-start-->
+                    <div class="map-wrapper">
+                        <div id="map_canvas">
+
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.5056499242296!2d81.66347541424855!3d21.2117883868822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28dd6300ab1b05%3A0xaf8a6ff8e14c0990!2sAwizom%20Tech%20Bytes%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1581058365565!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                            
+
+                        </div>
+                    </div>
+                    <!--map-end-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- map-section end -->
+</div><!--site-main end-->
+
+@Html.Hidden("RedirectToHome", Url.Action("Contact", "Home"))
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Design/sweetalert.css" rel="stylesheet" />
+<script src="~/Design/sweetalert.js"></script>
+
+
+<script type="text/javascript">
+        $(function() {
+            var msg='@TempData["example"]';
+            if(msg=='Succeeded') {
+                sweetAlert({
+                    title: "Succeeded!",
+                    text: "Your Message has been Sent SUCCESSFULLY.",
+                    type: "success"
+                },
+                                      function() {
+                                          var url=$("#RedirectToHome").val();
+                                          location.href=url;
+                                      });
+
+            }
+            else {
+
+
+            }
+        });
+
+</script>
+
+
+<script>
+    // WRITE THE VALIDATION SCRIPT.
+    function isNumber(evt) {
+        var iKeyCode=(evt.which)?evt.which:evt.keyCode
+        if(iKeyCode!=46&&iKeyCode>31&&(iKeyCode<48||iKeyCode>57))
+            return false;
+
+        return true;
+    }
+
+
+    $(function() {
+        $("#Name").keypress(function(e) {
+            var keyCode=e.keyCode||e.which;
+
+            $("#lblError").html("");
+
+            //Regex for Valid Characters i.e. Alphabets and Numbers.
+            var regex=/^[A-Za-z\. ]+$/;
+
+            //Validate TextBox value against the Regex.
+            var isValid=regex.test(String.fromCharCode(keyCode));
+            if(!isValid) {
+                $("#lblError").html("Only Alphabets are allowed for Name.");
+            }
+
+            return isValid;
+        });
+    });
+</script>

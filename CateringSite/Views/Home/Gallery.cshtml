@@ -1,0 +1,212 @@
+﻿@{
+    ViewBag.Title = "Gallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header id="masthead" class="header ttm-header-style-01">
+    <!-- ttm-header-wrap -->
+    <div class="ttm-header-wrap">
+        <!-- ttm-stickable-header-w -->
+        <div id="ttm-stickable-header-w" class="ttm-stickable-header-w ttm-bgcolor-darkgrey clearfix">
+            <div id="site-header-menu" class="site-header-menu">
+                <div class="site-header-menu-inner ttm-stickable-header">
+                    <div class="container-fluid">
+                        <!-- site-branding -->
+                        <div class="site-branding">
+                            <a class="home-link" href="@Url.Action("Index","Home")" title="Zester" rel="home">
+                                <img id="logo-img" class="img-center" src="~/Design/sunshinelogo.png" alt="logo-img" style="margin-top:-7px;">
+                                <b style="color: white; font-size: xx-large; font-family: 'Century Schoolbook'">Sunshine Catering</b>
+                            </a>
+                        </div><!-- site-branding end -->
+                        <!--site-navigation -->
+                        <div id="site-navigation" class="site-navigation">
+                            <!-- header-icons -->
+                            <!-- header-icons end -->
+                            @*<div class="header-btn">
+                                    <a class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-border ttm-btn-color-skincolor" href="#">ORDER ONLINE</a>
+                                </div>*@
+
+                            <div class="ttm-menu-toggle">
+                                <input type="checkbox" id="menu-toggle-form" />
+                                <label for="menu-toggle-form" class="ttm-menu-toggle-block">
+                                    <span class="toggle-block toggle-blocks-1"></span>
+                                    <span class="toggle-block toggle-blocks-2"></span>
+                                    <span class="toggle-block toggle-blocks-3"></span>
+                                </label>
+                            </div>
+                            <nav id="menu" class="menu">
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="@Url.Action("Index","Home")">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("About","Home")">About Us</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Services", "Home")">Services</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Menu","Home")">Menu</a>
+                                    </li>
+
+                                    <li class="active">
+                                        <a href="@Url.Action("Gallery","Home")">Gallery</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Contact","Home")">Contact</a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div><!-- site-navigation end-->
+                    </div>
+                </div>
+            </div>
+        </div><!-- ttm-stickable-header-w end-->
+    </div><!--ttm-header-wrap end -->
+</header>
+
+
+<!-- page-title -->
+<div class="ttm-page-title-row">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-box">
+                    <div class="page-title-heading">
+                        <h1 class="title">Gallery</h1>
+                    </div><!-- /.page-title-captions -->
+
+                </div>
+            </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</div>
+<!-- page-title END-->
+<!--site-main start-->
+<!--site-main end-->
+<!--site-main start-->
+<div class="site-main">
+    <!-- event-section -->
+    <section class="ttm-row only-one-section clearfix">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- featured-imagebox-event -->
+                    <div class="featured-imagebox featured-imagebox-event style2 top-image">
+                        <div class="featured-thumbnail">
+                            <!-- featured-image -->
+                            <img class="img-fluid" src="~/Design/images/post/post-05.jpg" alt="">
+                            <div class="ttm-event-date">
+                                <div class="ttm-meta-date">
+                                    <div class="ttm-event-meta-dtstart">
+                                        <!-- event date -->
+                                        7
+                                        <span class="entry-month">Nov</span><!-- event-month -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="featured-content box-shadow">
+                            <!-- featured-content -->
+                            <div class="featured-title">
+                                <!-- featured-title -->
+                                <h4><a href="@Url.Action("GalleryImages","Home")">Night Inspire Summer Party</a></h4>
+                            </div>
+                            <div class="ttm-box-meta">
+                                <div class="tribe-events-vanue">
+                                    <!-- event-vanue -->
+                                    <i class="fa fa-map-marker"></i> Restaurant Seabreez
+                                </div>
+                                <span class="ttm-event-meta-item ttm-event-time">
+                                    <!-- event-time -->
+                                    <i class="fa fa-clock-o"></i>
+                                    <span class="ttm-event-meta-dtend"> 10:00 am - 6:00 pm </span>
+                                </span>
+                            </div>
+                            
+                        </div>
+                    </div><!-- featured-imagebox-event END -->
+                </div>
+                <div class="col-md-4">
+                    <!-- featured-imagebox-event -->
+                    <div class="featured-imagebox featured-imagebox-event style2 top-image">
+                        <div class="featured-thumbnail">
+                            <!-- featured-image -->
+                            <img class="img-fluid" src="~/Design/images/post/post-06.jpg" alt="">
+                            <div class="ttm-event-date">
+                                <div class="ttm-meta-date">
+                                    <div class="ttm-event-meta-dtstart">
+                                        <!-- event date -->
+                                        23
+                                        <span class="entry-month">dec</span><!-- event-month -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="featured-content box-shadow">
+                            <!-- featured-content -->
+                            <div class="featured-title">
+                                <!-- featured-title -->
+                                <h4><a href="@Url.Action("GalleryImages","Home")">Japanese Street Food Festival</a></h4>
+                            </div>
+                            <div class="ttm-box-meta">
+                                <div class="tribe-events-vanue">
+                                    <!-- event-vanue -->
+                                    <i class="fa fa-map-marker"></i> Restaurant Seabreez
+                                </div>
+                                <span class="ttm-event-meta-item ttm-event-time">
+                                    <!-- event-time -->
+                                    <i class="fa fa-clock-o"></i>
+                                    <span class="ttm-event-meta-dtend"> 10:00 am - 6:00 pm </span>
+                                </span>
+                            </div>
+                           
+                        </div>
+                    </div><!-- featured-imagebox-event END -->
+                </div>
+                <div class="col-md-4">
+                    <!-- featured-imagebox-event -->
+                    <div class="featured-imagebox featured-imagebox-event style2 top-image">
+                        <div class="featured-thumbnail">
+                            <!-- featured-image -->
+                            <img class="img-fluid" src="~/Design/images/post/post-07.jpg" alt="">
+                            <div class="ttm-event-date">
+                                <div class="ttm-meta-date">
+                                    <div class="ttm-event-meta-dtstart">
+                                        <!-- event date -->
+                                        15
+                                        <span class="entry-month">may</span><!-- event-month -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="featured-content box-shadow">
+                            <!-- featured-content -->
+                            <div class="featured-title">
+                                <!-- featured-title -->
+                                <h4><a href="@Url.Action("GalleryImages","Home")">Tmordans Celebrities at Jdoniie Night</a></h4>
+                            </div>
+                            <div class="ttm-box-meta">
+                                <div class="tribe-events-vanue">
+                                    <!-- event-vanue -->
+                                    <i class="fa fa-map-marker"></i> Restaurant Seabreez
+                                </div>
+                                <span class="ttm-event-meta-item ttm-event-time">
+                                    <!-- event-time -->
+                                    <i class="fa fa-clock-o"></i>
+                                    <span class="ttm-event-meta-dtend"> 10:00 am - 6:00 pm </span>
+                                </span>
+                            </div>
+                           
+                        </div>
+                    </div><!-- featured-imagebox-event END -->
+                </div>
+            </div><!-- row end-->
+        </div>
+    </section>
+    <!-- event-section -->
+</div><!--site-main end-->

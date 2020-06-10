@@ -1,0 +1,190 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="~/Areas/Admin/admin.css" rel="stylesheet" />
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="~/Design/sunshinelogo.png">
+    <title>Sunshine Catering</title>
+</head>
+
+
+<!------ Include the above in your HEAD tag ---------->
+<body>
+    @Html.AntiForgeryToken()
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav navbar-sidenav">
+                <a class="nav-link navlogo text-center" href="#">
+
+                    <img src="~/Design/sunshinelogo.png" style="margin-left:-20px;" />
+
+
+                </a>
+
+                <li class="nav-item" style="margin-top:-10px;">
+                    <a class="nav-link sidefrst" href="@Url.Action("MenuCatgory", "Admin", new  {area="Admin" })">
+                        <span class="textside">Add Menu Category</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" style="margin-top:-10px;">
+                    <a class="nav-link sidefrst" href="@Url.Action("MenuItems", "Admin", new  {area="Admin" })">
+                        <span class="textside">Add Menu Items</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" style="margin-top:-10px;">
+                    <a class="nav-link sidefrst" href="@Url.Action("AllMenuItems", "Admin", new  {area="Admin" })">
+                        <span class="textside">All Menu Items</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" style="margin-top:-10px;">
+                    <a class="nav-link sidefrst" href="@Url.Action("SpecialDish", "Admin", new  {area="Admin" })">
+                        <span class="textside">Add Special Dish</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" style="margin-top:-10px;">
+                    <a class="nav-link sidefrst" href="@Url.Action("AllContactForm", "Admin", new  {area="Admin" })">
+                        <span class="textside">Website Contacts</span>
+                    </a>
+                </li>
+
+
+            </ul>
+
+        </div>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="LogoutFun()">Logout</a>
+
+
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Icon Cards-->
+
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+                    <a href="@Url.Action("MenuCatgory", "Admin", new  {area="Admin" })">
+                        <div class="inforide">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 col-sm-4 col-4 rideone">
+                                    <img src="~/Design/sunshinelogo.png" />
+
+                                </div>
+                                <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                                    <h4>Menu Category</h4>
+
+                                    @if (@ViewBag.TotalMenu != null)
+                                    {
+                                        <h2>@ViewBag.TotalMenu</h2>
+                                    }
+                                    else
+                                    {
+                                        <h2>0</h2>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+                    <a href="@Url.Action("AllMenuItems", "Admin", new  {area="Admin" })">
+                        <div class="inforide">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridetwo">
+                                    <img src="~/Design/sunshinelogo.png" />
+                                </div>
+                                <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                                    <h4>Menu Items</h4>
+                                    @if (@ViewBag.AllMenuItems != null)
+                                    {
+                                        <h2>@ViewBag.AllMenuItems </h2>
+                                    }
+                                    else
+                                    {
+                                        <h2>0</h2>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+                    <a href="@Url.Action("BookedMenu", "Admin", new { area="Admin"})">
+                        <div class="inforide">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridethree">
+                                    <img src="~/Design/sunshinelogo.png" />
+                                </div>
+                                <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                                    <h4>Online Booked</h4>
+                                    @if (@ViewBag.MenuBooked != null)
+                                    {
+                                        <h2>@ViewBag.MenuBooked</h2>
+                                    }
+                                    else
+                                    {
+                                        <h2>0</h2>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <img src="~/Design/MainBg1.jpg" style="height:380px;width:100%" />
+            
+            
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
+@Html.Hidden("RedirectToLogin", Url.Action("Login", "Account", new { area = "" }))
+<script>
+
+    function LogoutFun() {
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Admin/LogOff",
+            data: {
+                returnUrl: 'v'
+            },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+                var url=$("#RedirectToLogin").val();
+                location.href=url;
+            },
+
+        });
+    }
+
+</script>
+
